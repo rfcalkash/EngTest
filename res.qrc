@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/words/camera.png</file>
+        <file>images/words/cds.png</file>
+        <file>images/words/gloves.png</file>
+        <file>images/words/guitar.png</file>
+        <file>images/words/hairbrush.png</file>
+        <file>images/words/helmet.png</file>
+        <file>images/words/keys.png</file>
+        <file>images/words/mobile phone.png</file>
+        <file>images/words/roller blades.png</file>
+        <file>images/words/watch.png</file>
+        <file>images/box_back.png</file>
+        <file>images/box_front.png</file>
+        <file>EngPage.qml</file>
+        <file>KeyItem.qml</file>
+        <file>PairItem.qml</file>
+        <file>ImageBox.qml</file>
+        <file>Main.qml</file>
+        <file>GenericPage.qml</file>
+        <file>WorldPage.qml</file>
+        <file>SelectItem.qml</file>
+        <file>WorldPage_express.qml</file>
+        <file>MathPage.qml</file>
+    </qresource>
+</RCC>
