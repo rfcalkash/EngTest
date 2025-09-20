@@ -69,23 +69,18 @@ Page {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
                 placeholderText: "Ответ"
-                enabled: loader.status===Loader.Ready && !loader.item.checked
+                enabled: loader.status===Loader.Ready
             }
             Button{
                 Layout.alignment: Qt.AlignVCenter
-                text:loader.status===Loader.Ready?(loader.item.checked?"Дальше":"Проверить"):"Гружу"
-                enabled: loader.status===Loader.Ready && (loader.item.checked || loader.item.canCheck)
+                text:loader.status===Loader.Ready?"Проверить":"Гружу"
+                enabled: loader.status===Loader.Ready && loader.item.canCheck
                 onClicked: {
-                    if(!loader.item.checked){
-                        var isCorrect=loader.item.check()
-                        loader.item.correct=isCorrect
-                        if(isCorrect) {corrects++}else{inCorrects++}
-                        loader.item.checked=true
-                    }
-                    else{
-                        nextQuestion()
-                        answerInput.text=""
-                    }
+                    var isCorrect=loader.item.check()
+                    if(isCorrect) {corrects++}else{inCorrects++}
+                    resultDialog.title = isCorrect?"Верно!":"Ошибка :("
+                    resultDialog.informativeText = loader.item.getAnswer(isCorrect)
+                    resultDialog.open()
                 }
             }
         }
@@ -101,4 +96,14 @@ Page {
             nextQuestion()
         }
     }
+
+    MessageDialog{
+        id: resultDialog
+        buttons: MessageDialog.Ok
+        onAccepted:{
+            nextQuestion()
+            answerInput.text=""
+        }
+    }
+
 }

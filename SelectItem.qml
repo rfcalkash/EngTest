@@ -7,14 +7,15 @@ Item{
     function check(){
         return keyItem.currentKey===keyItem.question.key
     }
+    function getAnswer(correct){
+        return "<font color=\""+(correct?"green":"red")+"\">"+keyItem.question.answers[keyItem.question.key]+"</font>"
+    }
     
     property bool canCheck: currentKey>=0 && currentKey<question.answers.length
     property var question
-    property bool checked: false
-    property bool correct: false
     property int currentKey: -1
     ColumnLayout{
-        width: parent.width
+        width: Math.min(keyItem.width-Material.frameVerticalPadding*2,implicitWidth)
         height: implicitHeight
         anchors.centerIn: parent
         Label{
@@ -24,7 +25,6 @@ Item{
             verticalAlignment: Text.AlignVCenter
         }
         Item{
-            visible: !checked
             ButtonGroup{id: radioGroup}
             width: buttonsColumn.implicitWidth
             height: buttonsColumn.implicitHeight
@@ -41,13 +41,6 @@ Item{
                     }
                 }
             }
-        }
-        Label{
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
-            visible: checked
-            color: correct?"green":"red"
-            text: keyItem.question.answers[keyItem.question.key]
         }
     }
 }

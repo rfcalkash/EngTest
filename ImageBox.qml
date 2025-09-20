@@ -9,9 +9,11 @@ Item{
     }
     property bool canCheck: currentAnswer.trim().length>0
     
+    function getAnswer(correct){
+        return "The "+"<font color=\""+(correct?"green":"red")+"\">"+question.item.word+" "+question.prep.word+"</font>"+" the box"
+    }
+
     property var question
-    property bool checked: false
-    property bool correct: false
     ColumnLayout{
         anchors.fill: parent
         Item{
@@ -46,7 +48,7 @@ Item{
         Label{
             Layout.fillWidth: true
             textFormat: Text.StyledText
-            text: !checked?"The ... ... the box":("The "+"<font color=\""+(correct?"green":"red")+"\">"+question.item.word+" "+question.prep.word+"</font>"+" the box")
+            text: "The ... ... the box"
         }
     }
 }

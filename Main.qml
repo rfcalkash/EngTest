@@ -56,17 +56,6 @@ ApplicationWindow {
     }
 
     Component{
-        id: engPage
-        EngPage{
-
-        }
-    }
-    Component{
-        id: worldPage
-        WorldPage{}
-    }
-
-    Component{
         id:mainMenuComponent
         Page{
             ColumnLayout{
@@ -78,7 +67,7 @@ ApplicationWindow {
                     text:"English"
                     onClicked: {
                         testName.text="English"
-                        stackView.push(engPage)
+                        stackView.push("qrc:/EngPage.qml")
                     }
                 }
                 Button{
@@ -86,7 +75,7 @@ ApplicationWindow {
                     text:"Окружающий мир"
                     onClicked: {
                         testName.text="Окружающий мир"
-                        stackView.push(worldPage)
+                        stackView.push("qrc:/WorldPage.qml")
                     }
                 }
                 Button{
